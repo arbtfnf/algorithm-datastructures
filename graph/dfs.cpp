@@ -6,7 +6,7 @@ vector<int> store[1000];
 int visited[1000];
 void dfs(int k){
     visited[k] = 1;
-    cout << k << cout;
+    cout << k;
     for(auto it = store[k].begin(); it != store[k].end(); it++){
         if(!visited[*it]) dfs(*it);
     }
