@@ -2,7 +2,7 @@
 using namespace std;
 
 int n, e, x, y;
-int vector<int> store[1000];
+vector<int> store[1000];
 int visited[1000];
 void dfs(int k){
     visited[k] = 1;
