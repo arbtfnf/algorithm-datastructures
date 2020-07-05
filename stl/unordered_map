@@ -3,7 +3,8 @@ using namespace std;
 
 int main() {
 	long long int n;
-	unordered_map<long long int,long long int>m;
+	//unordered_map<long long int,long long int>m;
+	map<long long int,long long int>m;
 	cin>>n;
 	for(long long int i=0; i<n; i++){
 		long long int mkh;
