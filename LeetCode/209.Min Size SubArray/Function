@@ -1,0 +1,35 @@
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+      int sum = 0;
+      int res = Integer.MAX_VALUE;
+      int low = 0;
+      for (int i = 0; i < nums.length; i++) {
+        if (target > sum) {
+          sum += nums[i];
+        } 
+        if (target <= sum){
+          res = Math.min(i - low + 1, res);
+          // sum -= nums[low++]; 
+        }
+
+        while (target <= sum) {
+          res = Math.min(i - low + 1, res);
+          sum -= nums[low++]; 
+        }
+      }
+
+      if (res == Integer.MAX_VALUE) return 0;
+
+      return res;
+    }
+}
+
+//The code uses a sliding window approach to find the minimum subarray length. It initializes variables `sum` 
+//and `res` to keep track of the current sum and the minimum length respectively. It also initializes a 
+//variable `low` to keep track of the starting index of the subarray.
+
+//The time complexity of this code is O(n), where n is the length of the `nums` array. This is because the code 
+//iterates through the array once using the for loop.
+
+//The space complexity of this code is O(1), as it only uses a constant amount of extra space to store the 
+//variables `sum`, `res`, and `low`.
