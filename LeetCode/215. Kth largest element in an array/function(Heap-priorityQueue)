@@ -1,0 +1,23 @@
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> pq = new PriorityQueue<>(k);
+
+        for (int i=0; i<k; i++) {
+            pq.add(nums[i]);
+        }
+
+        for (int i=k; i<nums.length; i++) {
+            if (nums[i] > pq.peek()) {
+                pq.poll();
+                pq.add(nums[i]);
+            }
+        }
+        return pq.poll();
+    }
+}
+
+//The heap property states that for a max heap, the value of each node is greater 
+//than or equal to the values of its children. Similarly, for a min heap, 
+//the value of each node is less than or equal to the values of its children.
+//The solution iterates through the first k elements of the input array and adds 
+//them to the priority queue. This ensures that the priority queue initially contains the k largest elements.
