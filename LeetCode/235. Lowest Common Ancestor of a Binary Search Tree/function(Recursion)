@@ -1,0 +1,47 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        
+        return traverse(root,p,q);
+
+    }
+
+    public TreeNode traverse(TreeNode node, TreeNode p, TreeNode q) {
+        if (node == p || node == q) {
+            return node;
+        }
+
+        else if (node.val <= p.val && node.val >= q.val) {
+            return node;
+        }
+
+        else if(node.val < p.val && node.val < q.val) {
+            return traverse(node.right, p, q);
+        }
+
+        else if(node.val > p.val && node.val > q.val) {
+            return traverse(node.left, p, q);
+        }
+        return node;
+
+    }
+}
+
+
+//Time complexity: O(h) -> h height of the tree that is log(n) -> n in worst case.
+//Space complexity: O(logn) -> The space complexity of the above 
+// solution is O(log n) in the average case and O(n) in the worst case. 
+// This is because the space used by the recursive call stack is 
+// proportional to the height of the tree, which is log n in the average 
+// case for a balanced tree. However, in the worst case, the tree can 
+// be skewed and the height can be equal to the number of nodes, 
+// resulting in a space complexity of O(n).
